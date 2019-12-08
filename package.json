@@ -1,0 +1,11 @@
+{
+  "name": "web-resume",
+  "version": "3.0.0",
+  "private": true,
+  "scripts": {
+    "start": "concurrently --kill-others \"cd ./client && npm start\" \"cd backend && npm start\""
+  },
+  "dependencies": {
+    "concurrently": "^5.0.0"
+  }
+}
