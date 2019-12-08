@@ -23,7 +23,8 @@ RUN npm install
 
 COPY . .
 
-ARG A_VARIABLE
-ENV mongodburl="mongodb+srv://valentinr:qYjQmH.k4v6Zeu,@cluster0-zg1sr.gcp.mongodb.net/test?retryWrites=true&w=majority"
+ARG mongodburiarg
+ENV mongodburi=${mongodburiarg}
+RUN echo "mongodb uri:${mongodburi}"
 EXPOSE 3000
-CMD [ "npm", "start" ]
+CMD [ "bash", "start.bash" ]

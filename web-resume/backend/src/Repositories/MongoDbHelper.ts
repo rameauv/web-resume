@@ -6,7 +6,7 @@ import { WorkingExperiencesDb } from "../ModelDb/WorkingExperiencesDb";
 
 export class MongoDbHelper {
     // Connection URL
-    private uri = process.env.mongodburl;
+    private uri = process.env.mongodburi;
     // Database Name
     private dbName = "truc";
     private client: MongoClient.MongoClient;
@@ -14,6 +14,7 @@ export class MongoDbHelper {
 
     constructor() {
         // Create a new MongoClient
+        console.log("mongodburi:" + this.uri);
         this.client = new MongoClient.MongoClient(this.uri, { useNewUrlParser: true });
 
         // Use connect method to connect to the Server
