@@ -24,7 +24,6 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build"
   },
-  "proxy": "http://localhost:8080",
   "browserslist": {
     "production": [
       ">0.2%",
