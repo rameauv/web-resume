@@ -10,7 +10,7 @@ function injectAuthHeader(header, token) {
 }
 
 export class ApiService {
-    _URL = "http://localhost:3000/api";
+    _URL = "http://localhost/api";
     /**
      * Get query string
      *
