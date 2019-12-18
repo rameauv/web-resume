@@ -25,6 +25,9 @@ COPY --from=build-stage /app/client/build/ /usr/share/nginx/html
 COPY --from=build-stage /app/nginx.conf.template /etc/nginx/conf.d/default.conf.template
 
 RUN apt-get update && apt-get install -y nodejs
+RUN apt-get install -y sudo
+RUN apt-get install -y htop
+RUN apt-get install -y nano
 
 COPY --from=build-stage /app/backend/dist/ /app
 COPY --from=build-stage /app/backend/node_modules/ /app/node_modules
@@ -32,6 +35,4 @@ COPY --from=build-stage /app/backend/node_modules/ /app/node_modules
 ARG MONGODB_URI_ARG
 ENV mongodburi=${MONGODB_URI_ARG}
 RUN echo "mongodb uri:${mongodburi}"
-ARG NGINX_PORT_ARG
-ENV PORT=${NGINX_PORT_ARG}
-CMD sh -c envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx && node /app/index.js
+CMD sh -c "envsubst '\$PORT' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf" && nginx & node /app/index.js
