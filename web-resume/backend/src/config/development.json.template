@@ -1,0 +1,8 @@
+{
+    "db":{
+        "dbname": "truc", // the database name
+        "uri": "mongodb://localhost:27017/" // the mongodb uri
+    },
+    "jwtSecret": "", // the jwt secret
+    "port": "8080" // The port to bind
+}

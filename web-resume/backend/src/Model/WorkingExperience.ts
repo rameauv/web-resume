@@ -1,4 +1,4 @@
-export class WorkingExperienceDb {
+export class WorkingExperience {
     public title: string;
     public company: string;
     public startingDate: Date;

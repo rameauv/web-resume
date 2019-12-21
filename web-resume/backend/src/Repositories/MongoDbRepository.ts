@@ -1,21 +1,28 @@
+import { injectable } from "inversify";
 import * as MongoClient from "mongodb";
-import { CompetencesDb } from "../ModelDb/CompetencesDb";
-import { Contact } from "../ModelDb/Contact";
-import { User } from "../ModelDb/User";
-import { WorkingExperiencesDb } from "../ModelDb/WorkingExperiencesDb";
+import "reflect-metadata";
+import config from "../config/config";
+import { CompetencesDb } from "../Model/Competences";
+import { Contact } from "../Model/Contact";
+import { User } from "../Model/User";
+import { WorkingExperiences } from "../Model/WorkingExperiences";
+import { IRepository } from "./IRepository";
 
-export class MongoDbHelper {
+@injectable()
+export class MongoDbRepository implements IRepository {
     // Connection URL
-    private uri = process.env.mongodburi;
+    private uri: string;
     // Database Name
-    private dbName = "truc";
+    private dbName: string;
     private client: MongoClient.MongoClient;
     private db: MongoClient.Db;
 
     constructor() {
         // Create a new MongoClient
+        this.uri = config.get("db").uri;
+        this.dbName = config.get("db").dbname;
         console.log("mongodburi:" + this.uri);
-        this.client = new MongoClient.MongoClient(this.uri, { useNewUrlParser: true });
+        this.client = new MongoClient.MongoClient(this.uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
         // Use connect method to connect to the Server
         this.client.connect((err) => {
@@ -31,7 +38,7 @@ export class MongoDbHelper {
         return await this.db.collection("contact").findOne({ userdataid });
     }
 
-    public async getUserWorkingExperiencesAsync(userdataid: string): Promise<WorkingExperiencesDb> {
+    public async getUserWorkingExperiencesAsync(userdataid: string): Promise<WorkingExperiences> {
         return await this.db.collection("workingExperiences").findOne({ userdataid });
     }
 
