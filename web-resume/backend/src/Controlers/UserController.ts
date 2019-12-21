@@ -1,19 +1,22 @@
 import * as express from "express";
 import { morphism } from "morphism";
-import { JwtFunctions } from "../Services/JwtMiddleware";
-import { UserDatasService } from "../Services/UserDatasService";
+import { myContainer } from "../config/inversify.config";
+import { IJwtService } from "../Services/IJwtService";
+import { IUserService } from "../Services/IUserService";
+import { AsyncCheckToken } from "../middleware/JwtMiddleware";
 import { UserDatasMap } from "./DbDtoMaps";
 
 export function UserDatasController() {
     const router = express.Router();
-    const userDatasService = new UserDatasService();
-    const jwtFunctions = new JwtFunctions();
+    const userService = myContainer.get<IUserService>("IUserService");
+    const jwtService = myContainer.get<IJwtService>("IJwtService");
+    const checkToken = AsyncCheckToken(jwtService);
 
     router.get("/userDatas", async (req: any, res) => {
         const userid = req.query.userid;
         res.setHeader("Content-Type", "application/json");
         // const userid = "username";
-        const userDatas = await userDatasService.getUserDatasAsync(userid);
+        const userDatas = await userService.getUserAsync(userid);
         if (!userDatas) {
             res.status(400).json({
                 message: "bad userid",
@@ -26,11 +29,11 @@ export function UserDatasController() {
         res.send(json);
     });
 
-    router.get("/myUserDatas", jwtFunctions.checkToken, async (req: any, res) => {
+    router.get("/myUserDatas", checkToken, async (req: any, res) => {
         const userid = req.decoded.userid;
         res.setHeader("Content-Type", "application/json");
         // const userid = "username";
-        const userDatas = await userDatasService.getUserDatasAsync(userid);
+        const userDatas = await userService.getUserAsync(userid);
         const userDatasDto = morphism(UserDatasMap, userDatas);
         const json = JSON.stringify(userDatasDto);
         res.send(json);

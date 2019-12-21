@@ -15,7 +15,7 @@ app.get( "/", ( req, res ) => {
 
 // register controllers
 import { AccountController } from "./Controlers/AccountController";
-import { UserDatasController } from "./Controlers/UserDatasController";
+import { UserDatasController } from "./Controlers/UserController";
 app.use(bodyParser.urlencoded({ // Middleware
     extended: true
   }));

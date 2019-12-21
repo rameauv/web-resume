@@ -1,5 +1,9 @@
 {
     "compilerOptions": {
+        "experimentalDecorators": true,
+        "lib": ["es2020"],
+        "types": ["reflect-metadata"],
+        "emitDecoratorMetadata": true,
         "module": "commonjs",
         "esModuleInterop": true,
         "target": "es6",

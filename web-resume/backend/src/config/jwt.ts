@@ -1,3 +1,0 @@
-export class JwtConfig {
-    public static secret = "MIIBOgIBAAJBAIRgN2ZysbxMlcd9WHwt8q/xC8ym3Zynv2Q7XVobCdrKbE2+SBWuTQxRvAN4SLHckBv+I3LK8aoGdTetz/mORhECAwEAAQJASDQ/I6dd4QqZDBYHxLw/Ss6dFATUjlVFZQOoeLSU3HySQ0S/uE3HI7H/HNN4qnjcjHSyp02/2xyE0vBp1o2j0QIhAL6MAHcX9dks4iX88Fd2gCpmsls35ToK/l4Hmc+GnXutAiEAsdjdnP3TCjWjHS1vWK3lsGn/tmmSnWH4cXuuBGx/wHUCIFgNgEWIl/51BEiDu1jflNiDPpZynQYWgHdZUdWZonq9AiEAk/0He8liwQ4c6vyRuNMLXB74H8v9qmSJnbTy+s9mBrkCIAWwcxdKKv45apyPXuwAb4hH34YTQ9gteIyRfi/BisWH";
-}

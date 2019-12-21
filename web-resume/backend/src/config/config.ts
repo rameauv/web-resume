@@ -1,4 +1,7 @@
 import convict from "convict";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const config = convict({
     db: {
@@ -19,10 +22,17 @@ const config = convict({
     },
     env: {
         arg: "node-env",
-        default: "production",
+        default: "development",
         doc: "The application environment.",
         env: "NODE_ENV",
         format: ["production", "development"]
+    },
+    jwtSecret: {
+        arg: "jwt-secret",
+        default: "from default",
+        doc: "The jwt secret.",
+        env: "JWT_SECRET",
+        format: String
     },
     port: {
         arg: "port",

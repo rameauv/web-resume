@@ -1,11 +1,15 @@
+import { injectable } from "inversify";
 import * as MongoClient from "mongodb";
+import "reflect-metadata";
 import config from "../config/config";
 import { CompetencesDb } from "../Model/Competences";
 import { Contact } from "../Model/Contact";
 import { User } from "../Model/User";
 import { WorkingExperiences } from "../Model/WorkingExperiences";
+import { IRepository } from "./IRepository";
 
-export class MongoDbHelper {
+@injectable()
+export class MongoDbRepository implements IRepository {
     // Connection URL
     private uri: string;
     // Database Name
