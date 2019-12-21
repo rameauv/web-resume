@@ -1,4 +1,4 @@
-import { ResumeDb } from "./ResumeDb";
+import { Resume } from "./Resume";
 
 export class User {
     public userid: string;
@@ -7,5 +7,5 @@ export class User {
     public lastname: string;
     public profilePicture: string;
     public resumeTitle: string;
-    public resume: ResumeDb;
+    public resume: Resume;
 }

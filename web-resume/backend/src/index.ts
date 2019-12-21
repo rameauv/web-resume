@@ -15,18 +15,12 @@ app.get( "/", ( req, res ) => {
 
 // register controllers
 import { AccountController } from "./Controlers/AccountController";
-import { CompetencesController } from "./Controlers/CompetencsController";
-import { ContactControler } from "./Controlers/ContactController";
 import { UserDatasController } from "./Controlers/UserDatasController";
-import { WorkingExperiencesController } from "./Controlers/WorkingExperiencesController";
 app.use(bodyParser.urlencoded({ // Middleware
     extended: true
   }));
 app.use(bodyParser.json());
-app.use("/api", ContactControler());
-app.use("/api", WorkingExperiencesController());
 app.use("/api", AccountController());
-app.use("/api", CompetencesController());
 app.use("/api", UserDatasController());
 
 // start the Express server

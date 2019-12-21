@@ -1,9 +1,9 @@
 import * as MongoClient from "mongodb";
 import config from "../config/config";
-import { CompetencesDb } from "../ModelDb/CompetencesDb";
-import { Contact } from "../ModelDb/Contact";
-import { User } from "../ModelDb/User";
-import { WorkingExperiencesDb } from "../ModelDb/WorkingExperiencesDb";
+import { CompetencesDb } from "../Model/Competences";
+import { Contact } from "../Model/Contact";
+import { User } from "../Model/User";
+import { WorkingExperiences } from "../Model/WorkingExperiences";
 
 export class MongoDbHelper {
     // Connection URL
@@ -34,7 +34,7 @@ export class MongoDbHelper {
         return await this.db.collection("contact").findOne({ userdataid });
     }
 
-    public async getUserWorkingExperiencesAsync(userdataid: string): Promise<WorkingExperiencesDb> {
+    public async getUserWorkingExperiencesAsync(userdataid: string): Promise<WorkingExperiences> {
         return await this.db.collection("workingExperiences").findOne({ userdataid });
     }
 

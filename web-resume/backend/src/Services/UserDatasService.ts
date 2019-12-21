@@ -1,4 +1,4 @@
-import { User } from "../ModelDb/User";
+import { User } from "../Model/User";
 import { MongoDbHelper } from "../Repositories/MongoDbHelper";
 
 export class UserDatasService {
