@@ -1,8 +1,8 @@
 {
     "db":{
         "dbname": "truc", // the database name
-        "uri": "mongodb://localhost:27017/Issoyo" // the mongodb uri
+        "uri": "mongodb://localhost:27017/" // the mongodb uri
     },
-    "jwtSecret": "" // the jwt secret
+    "jwtSecret": "", // the jwt secret
     "port": "8080" // The port to bind
 }
