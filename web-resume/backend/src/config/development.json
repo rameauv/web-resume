@@ -1,0 +1,7 @@
+{
+    "db":{
+        "dbname": "truc",
+        "uri": "mongodb://localhost:27017/Issoyo"
+    },
+    "port": "8080"
+}
