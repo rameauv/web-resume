@@ -5,15 +5,15 @@ import { UserDatasService } from "../Services/UserDatasService";
 import { UserDatasMap } from "./DbDtoMaps";
 
 export function UserDatasController() {
-    const _router = express.Router();
-    const _userDatasService = new UserDatasService();
-    const _jwtFunctions = new JwtFunctions();
+    const router = express.Router();
+    const userDatasService = new UserDatasService();
+    const jwtFunctions = new JwtFunctions();
 
-    _router.get("/userDatas", async (req: any, res) => {
+    router.get("/userDatas", async (req: any, res) => {
         const userid = req.query.userid;
         res.setHeader("Content-Type", "application/json");
         // const userid = "username";
-        const userDatas = await _userDatasService.getUserDatasAsync(userid);
+        const userDatas = await userDatasService.getUserDatasAsync(userid);
         if (!userDatas) {
             res.status(400).json({
                 message: "bad userid",
@@ -26,15 +26,15 @@ export function UserDatasController() {
         res.send(json);
     });
 
-    _router.get("/myUserDatas", _jwtFunctions.checkToken, async (req: any, res) => {
+    router.get("/myUserDatas", jwtFunctions.checkToken, async (req: any, res) => {
         const userid = req.decoded.userid;
         res.setHeader("Content-Type", "application/json");
         // const userid = "username";
-        const userDatas = await _userDatasService.getUserDatasAsync(userid);
+        const userDatas = await userDatasService.getUserDatasAsync(userid);
         const userDatasDto = morphism(UserDatasMap, userDatas);
         const json = JSON.stringify(userDatasDto);
         res.send(json);
     });
 
-    return _router;
+    return router;
 }

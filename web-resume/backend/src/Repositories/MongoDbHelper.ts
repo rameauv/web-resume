@@ -1,4 +1,5 @@
 import * as MongoClient from "mongodb";
+import config from "../config/config";
 import { CompetencesDb } from "../ModelDb/CompetencesDb";
 import { Contact } from "../ModelDb/Contact";
 import { User } from "../ModelDb/User";
@@ -6,16 +7,18 @@ import { WorkingExperiencesDb } from "../ModelDb/WorkingExperiencesDb";
 
 export class MongoDbHelper {
     // Connection URL
-    private uri = process.env.mongodburi;
+    private uri: string;
     // Database Name
-    private dbName = "truc";
+    private dbName: string;
     private client: MongoClient.MongoClient;
     private db: MongoClient.Db;
 
     constructor() {
         // Create a new MongoClient
+        this.uri = config.get("db").uri;
+        this.dbName = config.get("db").dbname;
         console.log("mongodburi:" + this.uri);
-        this.client = new MongoClient.MongoClient(this.uri, { useNewUrlParser: true });
+        this.client = new MongoClient.MongoClient(this.uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
         // Use connect method to connect to the Server
         this.client.connect((err) => {

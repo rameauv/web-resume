@@ -2,9 +2,9 @@ import { CompetencesDb } from "../ModelDb/CompetencesDb";
 import { MongoDbHelper } from "../Repositories/MongoDbHelper";
 
 export class CompetencesService {
-    private _mongoDbHelper = new MongoDbHelper();
+    private mongoDbHelper = new MongoDbHelper();
 
     public async getUserCompetencesAsync(userdataid: string): Promise<CompetencesDb> {
-        return(await this._mongoDbHelper.getUserCompetencesAsync(userdataid));
+        return(await this.mongoDbHelper.getUserCompetencesAsync(userdataid));
     }
 }

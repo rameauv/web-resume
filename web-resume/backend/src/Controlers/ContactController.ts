@@ -10,11 +10,11 @@ export function ContactControler() {
     const jwtFunctions = new JwtFunctions();
 
     /**
-    * @swagger
-    * /getContact:
-    *    get:
-    *      description: This should return contact info
-    */
+     * @swagger
+     * /getContact:
+     *    get:
+     *      description: This should return contact info
+     */
     router.get("/contact", async (req: any, res, next) => {
         // const userid = req.decoded.userid;
         const userdataid = "5cf4945b38512b2278d09b0b";

@@ -9,11 +9,11 @@ export function CompetencesController() {
     const competencesFunction = new CompetencesService();
 
     /**
-    * @swagger
-    * /getcompetences:
-    *    get:
-    *      description: This should return competences info
-    */
+     * @swagger
+     * /getcompetences:
+     *    get:
+     *      description: This should return competences info
+     */
     router.get("/competences", async (req: any, res) => {
         // const userid = req.decoded.userid;
         const userdataid = "5cf4945b38512b2278d09b0b";

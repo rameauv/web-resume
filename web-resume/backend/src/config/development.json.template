@@ -1,0 +1,7 @@
+{
+    "db":{
+        "dbname": "truc", // the database name
+        "uri": "mongodb://localhost:27017/Issoyo" // the mongodb uri
+    },
+    "port": "8080" // The port to bind
+}

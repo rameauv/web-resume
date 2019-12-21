@@ -2,10 +2,10 @@
 import * as bodyParser from "body-parser";
 import * as cors from "cors";
 import express from "express";
-const fs = require("fs");
+import config from "./config/config";
 
 const app = express();
-const port = 8080; // default port to listen
+const port = config.get("port"); // default port to listen
 
 app.use(cors.default());
 // define a route handler for the default home page

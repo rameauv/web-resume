@@ -2,27 +2,27 @@ export const CompetencesMap = {
     competences: "competences"
 };
 export const CompetenceMap = {
-    title: "title",
-    rate: "rate"
+    rate: "rate",
+    title: "title"
 };
 export const WorkingExperiencesMap = {
     workingExperiences: "workingExperiences"
 };
 export const WorkingExperienceMap = {
-    title: "title",
-    company: "company",
-    startingDate: "startingDate",
-    endingDate: "endingDate",
-    current: "current",
     address: "address",
-    imageUrl: "imageUrl"
+    company: "company",
+    current: "current",
+    endingDate: "endingDate",
+    imageUrl: "imageUrl",
+    startingDate: "startingDate",
+    title: "title",
 };
 export const ContactMap = {
-    profilePicture: "profilePicture",
-    title: "title",
+    address: "address",
     firstname: "firstname",
     lastname: "lastname",
-    address: "address"
+    profilePicture: "profilePicture",
+    title: "title"
 };
 
 export const ResumeMap = {
@@ -32,10 +32,10 @@ export const ResumeMap = {
 };
 
 export const UserDatasMap = {
-    userid: "userid",
     firstname: "firstname",
     lastname: "lastname",
     profilePicture: "profilePicture",
+    resume: "resume",
     resumeTitle: "resumeTitle",
-    resume: "resume"
+    userid: "userid"
 };
