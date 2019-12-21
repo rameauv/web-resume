@@ -22,7 +22,7 @@ const config = convict({
     },
     env: {
         arg: "node-env",
-        default: "development",
+        default: "production",
         doc: "The application environment.",
         env: "NODE_ENV",
         format: ["production", "development"]
