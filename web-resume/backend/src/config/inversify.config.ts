@@ -1,20 +1,26 @@
-import { Container } from "inversify";
+import { Container, interfaces } from "inversify";
 import "reflect-metadata";
-import { JwtConfig } from "../Model/JwtConfig";
-import { IRepository } from "../Repositories/IRepository";
-import { MongoDbRepository } from "../Repositories/MongoDbRepository";
-import { IAccountService } from "../Services/IAccountService";
-import { IJwtService } from "../Services/IJwtService";
-import { AccountService } from "../Services/implementation/AccountService";
-import { JwtService } from "../Services/implementation/JwtService";
-import { UserService } from "../Services/implementation/UserService";
-import { IUserService } from "../Services/IUserService";
+import { AsyncCheckTokenMiddleware } from "../middleware/AsyncCheckTokenMiddleware";
+import { IAsyncCheckTokenMiddleware } from "../middleware/IAsyncCheckTokenMiddleware";
+import { IRepository } from "../repositories/IRepository";
+import { MongoDbRepository } from "../repositories/MongoDbRepository";
+import { IAccountService } from "../services/IAccountService";
+import { IJwtService } from "../services/IJwtService";
+import { AccountService } from "../services/implementation/AccountService";
+import { JwtService } from "../services/implementation/JwtService";
+import { TokenExtractorService } from "../services/implementation/TokenExtractorService";
+import { UserService } from "../services/implementation/UserService";
+import { ITokenExtractorService } from "../services/ITokenExtractorService";
+import { IUserService } from "../services/IUserService";
 import config from "./config";
 
 const myContainer = new Container();
 myContainer.bind<IRepository>("IRepository").to(MongoDbRepository).inSingletonScope();
 myContainer.bind<IUserService>("IUserService").to(UserService);
-myContainer.bind<IAccountService>("IAccountService").to(AccountService);
+myContainer.bind<IAccountService>("IAccountService").toDynamicValue((context: interfaces.Context) =>
+    new AccountService(context.container.get<IRepository>("IRepository"), config.jwtSecret));
 myContainer.bind<IJwtService>("IJwtService").to(JwtService);
+myContainer.bind<ITokenExtractorService>("ITokenExtractorService").to(TokenExtractorService);
+myContainer.bind<IAsyncCheckTokenMiddleware>("IAsyncCheckTokenMiddleware").to(AsyncCheckTokenMiddleware);
 
 export { myContainer };

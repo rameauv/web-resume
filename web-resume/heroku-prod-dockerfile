@@ -16,8 +16,8 @@ RUN cd ./backend && yarn
 
 # Bundle app source
 COPY . .
-RUN cd ./client && yarn run build
-RUN cd ./backend && yarn run build
+RUN cd ./client && yarn build
+RUN cd ./backend && yarn build
 
 # Stage 1, based on Nginx, to have only the compiled app, ready for production with Nginx
 FROM nginx:1.17.6

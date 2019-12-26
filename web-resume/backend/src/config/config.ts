@@ -25,18 +25,18 @@ const config = convict({
         default: "production",
         doc: "The application environment.",
         env: "NODE_ENV",
-        format: ["production", "development"]
+        format: ["production", "development", "test"]
     },
     jwtSecret: {
         arg: "jwt-secret",
-        default: "from default",
+        default: "secret",
         doc: "The jwt secret.",
         env: "JWT_SECRET",
         format: String
     },
     port: {
         arg: "port",
-        default: "from default",
+        default: 8080,
         doc: "The port to bind.",
         env: "API_PORT",
         format: "port"
@@ -47,9 +47,9 @@ const env = config.get("env");
 try {
     config.loadFile(`./src/config/${env}.json`);
 } catch (e) {
-    console.log(e);
+    console.log(`./src/config/${env}.json not found`);
 }
 
 config.validate({ allowed: "strict" }); // throws error if config does not conform to schema
 
-export default config;
+export default config.getProperties();

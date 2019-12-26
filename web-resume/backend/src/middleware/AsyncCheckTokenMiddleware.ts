@@ -1,28 +1,37 @@
 
-import * as express from "express";
-import * as jwt from "jsonwebtoken";
-import { IJwtService } from "../Services/IJwtService";
-import { InvalidTokenError } from "../Services/InvalidTokenError";
+import { inject, injectable } from "inversify";
+import "reflect-metadata";
+import { IJwtService } from "../services/IJwtService";
+import { InvalidTokenError } from "../services/InvalidTokenError";
+import { ITokenExtractorService } from "../services/ITokenExtractorService";
+import { IAsyncCheckTokenMiddleware } from "./IAsyncCheckTokenMiddleware";
 
-export const AsyncCheckToken = (jwtService: IJwtService) => {
-    return async (req: any, res: any, next: any) => {
-        try {
-            let token = req.headers["x-access-token"]
-                || req.headers.authorization; // Express headers are auto converted to lowercase
-            if (token && token.startsWith("Bearer ")) {
-                // Remove Bearer from string
-                token = token.slice(7, token.length);
-            }
+@injectable()
+export class AsyncCheckTokenMiddleware implements IAsyncCheckTokenMiddleware {
+    private jwtService: IJwtService;
+    private tokenExtractorService: ITokenExtractorService;
 
+    constructor(
+        @inject("IJwtService") jwtService: IJwtService,
+        @inject("ITokenExtractorService") tokenExtractorService: ITokenExtractorService) {
+
+        this.jwtService = jwtService;
+        this.tokenExtractorService = tokenExtractorService;
+    }
+
+    public build() {
+        return async (req: any, res: any, next: any) => {
+            const token = this.tokenExtractorService.MyExtract(req);
             if (token) {
                 try {
-                    const decoded = await jwtService.AsyncCheckToken(token);
+                    const decoded = await this.jwtService.AsyncCheckToken(token);
                     req.decoded = decoded;
                     next();
                 } catch (e) {
                     if (!(e instanceof InvalidTokenError)) {
                         throw e;
                     }
+                    res.status(401);
                     return res.json(
                         {
                             error: {
@@ -47,8 +56,6 @@ export const AsyncCheckToken = (jwtService: IJwtService) => {
                     }
                 });
             }
-        } catch (e) {
-            next(e);
-        }
-    };
+        };
+    }
 }

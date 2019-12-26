@@ -1,18 +1,19 @@
 import * as express from "express";
-import { morphism } from "morphism";
-import { myContainer } from "../config/inversify.config";
-import { IJwtService } from "../Services/IJwtService";
-import { IUserService } from "../Services/IUserService";
-import { AsyncCheckToken } from "../middleware/JwtMiddleware";
+import { morphism, StrictSchema } from "morphism";
+import { UserDto } from "../dto/UserDto";
+import { AsyncMiddleware } from "../middleware/AsyncMiddleware";
+import { IAsyncCheckTokenMiddleware } from "../middleware/IAsyncCheckTokenMiddleware";
+import { User } from "../model/User";
+import { IUserService } from "../services/IUserService";
 import { UserDatasMap } from "./DbDtoMaps";
 
-export function UserDatasController() {
-    const router = express.Router();
-    const userService = myContainer.get<IUserService>("IUserService");
-    const jwtService = myContainer.get<IJwtService>("IJwtService");
-    const checkToken = AsyncCheckToken(jwtService);
+export function UserDatasController(
+    userService: IUserService,
+    asyncCheckTokenMiddleware: IAsyncCheckTokenMiddleware) {
 
-    router.get("/userDatas", async (req: any, res) => {
+    const router = express.Router();
+    const checkToken = asyncCheckTokenMiddleware.build();
+    router.get("/userDatas", async (req: any, res: any) => {
         const userid = req.query.userid;
         res.setHeader("Content-Type", "application/json");
         // const userid = "username";
@@ -24,17 +25,17 @@ export function UserDatasController() {
             });
             return;
         }
-        const userDatasDto = morphism(UserDatasMap, userDatas);
+        const userDatasDto = morphism<StrictSchema<UserDto, User>>(UserDatasMap, userDatas);
         const json = JSON.stringify(userDatasDto);
         res.send(json);
     });
 
-    router.get("/myUserDatas", checkToken, async (req: any, res) => {
+    router.get("/myUserDatas", AsyncMiddleware(checkToken), async (req: any, res: any) => {
         const userid = req.decoded.userid;
         res.setHeader("Content-Type", "application/json");
         // const userid = "username";
         const userDatas = await userService.getUserAsync(userid);
-        const userDatasDto = morphism(UserDatasMap, userDatas);
+        const userDatasDto = morphism<StrictSchema<UserDto, User>>(UserDatasMap, userDatas);
         const json = JSON.stringify(userDatasDto);
         res.send(json);
     });
