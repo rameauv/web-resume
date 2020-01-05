@@ -19,7 +19,7 @@
         }
     },
     "include": [
-        "src/*", "src/Services/Experiences.ts", "src/Services/MongoDbHelper.ts"
+        "src/*", "src/services/Experiences.ts", "src/services/MongoDbHelper.ts"
     ],
     "exclude": ["dist"]
 }
