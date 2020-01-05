@@ -6,9 +6,11 @@ WORKDIR /app
 
 # Install app dependencies
 COPY ./client/package.json ./client/
+# COPY ./client/yarn.lock ./client/
 RUN cd ./client && yarn
 
 COPY ./backend/package.json ./backend/
+# COPY ./backend/yarn.lock ./backend/
 RUN cd ./backend && yarn
 
 # If you are building your code for production
@@ -16,6 +18,8 @@ RUN cd ./backend && yarn
 
 # Bundle app source
 COPY . .
+RUN cd ./client && yarn test:nowatch
+RUN cd ./backend && yarn test
 RUN cd ./client && yarn build
 RUN cd ./backend && yarn build
 

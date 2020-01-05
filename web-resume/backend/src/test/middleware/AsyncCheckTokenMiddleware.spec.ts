@@ -5,9 +5,9 @@ import "mocha";
 import sinon from "sinon";
 import * as TypeMoq from "typemoq";
 import { AsyncCheckTokenMiddleware } from "../../middleware/AsyncCheckTokenMiddleware";
-import { IJwtService } from "../../Services/IJwtService";
-import { InvalidTokenError } from "../../Services/InvalidTokenError";
-import { ITokenExtractorService } from "../../Services/ITokenExtractorService";
+import { IJwtService } from "../../services/IJwtService";
+import { InvalidTokenError } from "../../services/InvalidTokenError";
+import { ITokenExtractorService } from "../../services/ITokenExtractorService";
 
 describe("\"AsyncCheckToken\" middleware", () => {
     it("should not go in the next function when the token empty", async () => {

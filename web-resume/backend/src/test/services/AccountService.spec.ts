@@ -2,12 +2,12 @@ import { Arg, Substitute } from "@fluffy-spoon/substitute";
 import * as chai from "chai";
 import * as jwt from "jsonwebtoken";
 import "mocha";
-import { Credentials } from "../../Model/Credentials";
-import { Login } from "../../Model/Login";
-import { User } from "../../Model/User";
-import { IRepository } from "../../Repositories/IRepository";
-import { AccountService } from "../../Services/implementation/AccountService";
-import { InvalidCredentialsError } from "../../Services/InvalidCredentialsError";
+import { Credentials } from "../../model/Credentials";
+import { Login } from "../../model/Login";
+import { User } from "../../model/User";
+import { IRepository } from "../../repositories/IRepository";
+import { AccountService } from "../../services/implementation/AccountService";
+import { InvalidCredentialsError } from "../../services/InvalidCredentialsError";
 
 describe("'account' service", () => {
     it("the password should match", (done) => {

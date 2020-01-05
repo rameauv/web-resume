@@ -31,7 +31,7 @@ app.use("/api", UserDatasController(
     myContainer.get<IAsyncCheckTokenMiddleware>("IAsyncCheckTokenMiddleware"))
 );
 // start the Express server
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
     // tslint:disable-next-line:no-console
     console.log(`server started at http://localhost:${port}`);
 });
