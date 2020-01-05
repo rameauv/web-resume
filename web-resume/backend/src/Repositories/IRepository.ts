@@ -1,10 +1,7 @@
-import { CompetencesDb } from "../Model/Competences";
-import { Contact } from "../Model/Contact";
-import { User } from "../Model/User";
-import { WorkingExperiences } from "../Model/WorkingExperiences";
+import { CompetencesDb } from "../model/Competences";
+import { Contact } from "../model/Contact";
+import { User } from "../model/User";
+import { WorkingExperiences } from "../model/WorkingExperiences";
 export interface IRepository {
     getUserAsync(userid: string): Promise<User>;
-    getUserContactDatasAsync(userdataid: string): Promise<Contact>;
-    getUserWorkingExperiencesAsync(userdataid: string): Promise<WorkingExperiences>;
-    getUserCompetencesAsync(userdataid: string): Promise<CompetencesDb>;
 }

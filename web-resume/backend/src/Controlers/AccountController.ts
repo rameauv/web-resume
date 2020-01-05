@@ -1,23 +1,15 @@
-import * as  bcrypt from "bcrypt";
 import * as express from "express";
-import * as jwt from "jsonwebtoken";
-import { IRepository } from "..//Repositories/IRepository";
-import config from "../config/config";
-import { myContainer } from "../config/inversify.config";
-import { LoginDto } from "../Dto/LoginDto";
-import { Credentials } from "../Model/Credentials";
-import { IAccountService } from "../Services/IAccountService";
-import { InvalidCredentialsError } from "../Services/InvalidCredentialsError";
+import { LoginDto } from "../dto/LoginDto";
+import { Credentials } from "../model/Credentials";
+import { IAccountService } from "../services/IAccountService";
+import { InvalidCredentialsError } from "../services/InvalidCredentialsError";
 
-export function AccountController() {
+export function AccountController(accountService: IAccountService) {
     const router = express.Router();
-    const repository = myContainer.get<IRepository>("IRepository");
-    const accountService = myContainer.get<IAccountService>("IAccountService");
 
     router.post("/login", async (req, res) => {
         const userid = req.body.userid;
         const password = req.body.password;
-        const secret = config.get("jwtSecret");
 
         if (userid && password) {
             try {

@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
 import * as jwt from "jsonwebtoken";
-import config from "../../config/config"
+import config from "../../config/config";
 import { IJwtService } from "../IJwtService";
 import { InvalidTokenError } from "../InvalidTokenError";
 
@@ -8,7 +8,7 @@ import { InvalidTokenError } from "../InvalidTokenError";
 export class JwtService implements IJwtService {
 
     public AsyncCheckToken(token: string): Promise<string> {
-        const secret = config.get("jwtSecret");
+        const secret = config.jwtSecret;
         return new Promise<string>((resolve) => {
             jwt.verify(token, secret, (err: jwt.VerifyErrors, decoded: string) => {
                 if (err) {
