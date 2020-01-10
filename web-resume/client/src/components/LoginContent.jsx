@@ -5,15 +5,15 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import * as UserActions from '../actions/userActions';
+import { actions } from '../context';
 
 const mapStateToProps = (store) => ({
-  loginState: store.loginState,
+  loginState: store.user.loginState,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loginAction: (payload) => dispatch(UserActions.loginAction(payload)),
-  refreshLoggedUser: () => dispatch(UserActions.refreshLoggedUserAction()),
+  loginAction: (payload) => dispatch(actions.user.loginAction(payload)),
+  refreshLoggedUser: () => dispatch(actions.user.refreshLoggedUserAction()),
 });
 
 const styles = (theme) => ({

@@ -6,17 +6,17 @@ import SearchAppBar from '../components/appBar';
 import DashBoardContent from '../components/DashBoardContent';
 import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
-import { fetchAction, refreshLoggedUserAction } from "../actions/userActions";
+import { actions } from '../context';
 
 const mapStateToProps = store => ({
-    loginState: store.loginState,
-    user: store.user,
-    fetchedUser: store.fetchedUser
+    loginState: store.user.loginState,
+    user: store.user.user,
+    fetchedUser: store.user.fetchedUser
 });
 
 const mapDispatchToProps = dispatch => ({
-    fetchUser: (payload) => dispatch(fetchAction(payload)),
-    refreshLoggedUser: () => dispatch(refreshLoggedUserAction())
+    fetchUser: (payload) => dispatch(actions.user.fetchAction(payload)),
+    refreshLoggedUser: () => dispatch(actions.user.refreshLoggedUserAction())
 });
 
 const styles = () => ({

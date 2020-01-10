@@ -3,7 +3,7 @@ import * as enzyme from 'enzyme';
 import ReactSixteenAdapter from 'enzyme-adapter-react-16';
 import Competences from '../components/competences';
 import { findByTestAttr } from '../utils/findByTestAttr';
-import { CompetencesDto } from '../utils/apiDtos';
+import { CompetencesDto } from '../repositories/apiRepository/apiDtos';
 
 enzyme.configure({ adapter: new ReactSixteenAdapter() });
 
