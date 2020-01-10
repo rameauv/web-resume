@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
-import SearchAppBar from '../components/appBar';
-import LoginContent from '../components/LoginContent';
+import SearchAppBar from '../components/SearchAppBar';
+import LoginContent from '../components/loginContent';
 
 const styles = () => ({
   root: {

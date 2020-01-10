@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import withRoot from '../withRoot';
-import SearchAppBar from '../components/appBar';
-import DashBoardContent from '../components/DashBoardContent';
+import SearchAppBar from '../components/SearchAppBar';
+import DashBoardContent from '../components/dashBoardContent';
 import { Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
-import { actions } from '../context';
+import { actions } from '../../context';
 
 const mapStateToProps = store => ({
     loginState: store.user.loginState,

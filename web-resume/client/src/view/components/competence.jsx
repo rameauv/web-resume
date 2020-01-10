@@ -15,7 +15,7 @@ const styles = makeStyles(() => ({
   },
 }));
 
-const Competence = (props) => {
+const competence = (props) => {
   const { title, rate } = props;
   const classes = styles();
   if (!title || !rate) {
@@ -40,9 +40,9 @@ const Competence = (props) => {
   );
 };
 
-Competence.propTypes = {
+competence.propTypes = {
   rate: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
 };
 
-export default Competence;
+export default competence;

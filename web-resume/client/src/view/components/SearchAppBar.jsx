@@ -11,7 +11,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
-import { actions } from '../context';
+import { actions } from '../../context';
 import MenuItem from '@material-ui/core/MenuItem';
 
 const styles = theme => ({
@@ -155,7 +155,7 @@ class SearchAppBar extends React.Component {
           <Toolbar>
             <Typography className={classes.title} variant="h6" color="inherit" noWrap>
               Web-Resume
-                        </Typography>
+            </Typography>
             <div className={classes.grow} />
             <div className={classes.search}>
               <div className={classes.searchIcon}>
@@ -170,7 +170,7 @@ class SearchAppBar extends React.Component {
               />
             </div>
             <div className={classes.grow} />
-            {userDatas ?
+            {userDatas ? (
               <>
                 <div className={classes.sectionDesktop}>
                   <Avatar alt="Remy Sharp" src={userDatas.profilePicture} className={classes.avatar} onClick={this.handleMenu} />
@@ -197,17 +197,17 @@ class SearchAppBar extends React.Component {
                   <MenuItem>
                     <Link to={"/"}>
                       MyPage
-                                        </Link>
+                    </Link>
                   </MenuItem>
                 </Menu>
               </>
-              :
+            ) : (
               <Link to="/login" className={classes.loginLink}>
                 <Typography className={classes.title} variant="h6" color="inherit" noWrap>
                   Sign in
-                                </Typography>
+                </Typography>
               </Link>
-            }
+            )}
           </Toolbar>
         </AppBar>
       </div>
@@ -215,7 +215,7 @@ class SearchAppBar extends React.Component {
   }
 }
 
-SearchAppBar.propTypes = {
+AppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 

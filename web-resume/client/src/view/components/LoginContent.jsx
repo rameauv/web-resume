@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import LoginForm from './LoginForm';
-import { actions } from '../context';
+import { actions } from '../../context';
 
 const mapStateToProps = (store) => ({
   loginState: store.user.loginState,
@@ -28,7 +28,7 @@ const styles = (theme) => ({
   },
 });
 
-function CenteredGrid(props) {
+const loginContent = (props) => {
   const {
     loginAction,
     refreshLoggedUser,
@@ -57,9 +57,9 @@ function CenteredGrid(props) {
       </Grid>
     </div>
   );
-}
-
-CenteredGrid.propTypes = {
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(CenteredGrid));
+loginContent.propTypes = {
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(loginContent));
