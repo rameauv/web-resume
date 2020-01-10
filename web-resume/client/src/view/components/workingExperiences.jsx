@@ -5,9 +5,8 @@ import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/styles';
 import Divider from '@material-ui/core/Divider';
-import { WorkingExperiencesDto } from '../repositories/apiRepository/apiDtos';
+import { WorkingExperiencesDto } from '../../repositories/apiRepository/apiDtos';
 import WorkingExperience from './workingExperience';
-
 
 const styles = makeStyles(() => ({
   root: {

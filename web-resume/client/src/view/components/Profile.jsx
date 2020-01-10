@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import { Intro, IntroDatas } from './Intro';
+import { Intro, IntroDatas } from './intro';
 import WorkingExperiences from './workingExperiences';
 import Competences from './competences';
 

@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import ImageIcon from '@material-ui/icons/Image';
 import PropTypes from 'prop-types';
-import { WorkingExperienceDto } from '../repositories/apiRepository/apiDtos';
+import { WorkingExperienceDto } from '../../repositories/apiRepository/apiDtos';
 
 const styles = makeStyles(() => ({
   AvatarContainer: {

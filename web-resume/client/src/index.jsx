@@ -1,47 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import Dashboard from './pages/Dashboard';
-import Login from './pages/Login';
-import NotFound from './pages/Notfound';
 import * as serviceWorker from './serviceWorker';
-import configureStore from './store';
-import './App.css';
+import configureStore from './view/store';
+import App from './view/App';
 import configureModules from './modules';
 import context from './context';
 import configureServices from './configureServices';
 
-const App = (props) => {
-  const { store } = props;
-  return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Switch>
-          <Route
-            exact
-            path='/'
-            render={(props) => <Dashboard {...props} isMyProfile={true} />}
-          />
-          <Route
-            path='/profile/:username'
-            render={(props) => <Dashboard {...props} isMyProfile={false} />}
-          />
-          <Route
-            exact
-            path='/login'
-            render={(props) => <Login {...props} />}
-          />
-          <Route component={NotFound} />
-        </Switch>
-      </BrowserRouter>
-    </Provider>
-  );
-};
-
 const render = async (store) => {
   ReactDOM.render(<App store={store} />, document.getElementById('root'));
-}; 
+};
 
 (async function init() {
   // const services = await configureServices();

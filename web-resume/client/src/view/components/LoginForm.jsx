@@ -36,7 +36,7 @@ const styles = theme => ({
   },
 });
 
-class CenteredGrid extends React.Component {
+class LoginForm extends React.Component {
   constructor(props) {
     super(props);
 
@@ -132,9 +132,9 @@ class CenteredGrid extends React.Component {
   }
 }
 
-CenteredGrid.propTypes = {
+LoginForm.propTypes = {
   classes: PropTypes.object.isRequired,
   emitEvent: PropTypes.func,
 };
 
-export default (withStyles(styles)(CenteredGrid));
+export default (withStyles(styles)(LoginForm));
