@@ -1,15 +1,18 @@
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import userMainReducer from "./reducers/userMainReducer";
 
-function configureStore(store = {
-    loginState: "NO",
-    rotating: true,
+function configureStore(reducers, middlewares, store = {
+  user: {
+    loginState: 'NO',
     user: null,
-    fetchedUser: null
+    fetchedUser: null,
+  },
 }) {
-    const middleware = applyMiddleware(thunk, logger);
-    return createStore(userMainReducer, store, middleware);
+  const rootReducer = combineReducers({ user: reducers.user });
+  const flatMdls = Object.values(middlewares).flat();
+  const middleware = applyMiddleware(thunk, logger, ...flatMdls);
+  return createStore(rootReducer, store, middleware);
 }
+
 export default configureStore;
