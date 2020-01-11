@@ -1,6 +1,6 @@
-import apiRepositoryInit from './repositories/apiRepository/apiRepository';
-import jwtRepositoryInit from './repositories/jwtRepository';
-import userServiceInit  from './services/userService';
+import apiRepositoryInit from './repositories/user/implementation/apiRepository';
+import jwtRepositoryInit from './repositories/jwt/implementation/jwtRepository';
+import userServiceInit from './services/userService';
 import jwtServiceInit from './services/jwtService';
 
 export default function () {
@@ -12,4 +12,4 @@ export default function () {
     jwtService,
     userService,
   };
-};
+}

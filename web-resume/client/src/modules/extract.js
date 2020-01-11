@@ -2,13 +2,9 @@ export const ACTIONS_KEY = 'actions';
 export const REDUCER_KEY = 'reducer';
 export const MIDDLEWARE_KEY = 'middleware';
 
-export const validateModules = (modules) => {
-  return modules instanceof Object;
-};
+export const validateModules = (modules) => modules instanceof Object;
 
-export const validateKey = (key) => {
-  return typeof key === 'string';
-};
+export const validateKey = (key) => typeof key === 'string';
 
 export const extract = (modules, key) => {
   if (!validateModules(modules) || !validateKey(key)) {
@@ -22,9 +18,7 @@ export const extract = (modules, key) => {
 
       return { [moduleName]: module[key] };
     })
-    .reduce((output, entry) => {
-      return ({ ...output, ...entry });
-    }, {});
+    .reduce((output, entry) => ({ ...output, ...entry }), {});
 };
 
 export const extractActions = (modules) => extract(modules, ACTIONS_KEY);

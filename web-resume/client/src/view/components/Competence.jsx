@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { string, number } from 'prop-types';
+import PropTypes from 'prop-types';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';

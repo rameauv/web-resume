@@ -16,7 +16,7 @@ const styles = (theme) => ({
   },
 });
 
-function dashBoardContent(props) {
+const dashBoardContent = (props) => {
   const { classes } = props;
 
   return (
@@ -30,9 +30,10 @@ function dashBoardContent(props) {
       </Grid>
     </div>
   );
-}
+};
 
 dashBoardContent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
 };
 

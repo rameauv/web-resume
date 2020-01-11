@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Competence from './competence';
-import { CompetencesDto } from '../../repositories/apiRepository/apiDtos';
+import Competence from './Competence';
+import CompetencesDto from '../../repositories/user/dto/CompetenceDto';
 
 const styles = makeStyles(() => ({
   root: {
@@ -15,7 +15,7 @@ const styles = makeStyles(() => ({
   },
 }));
 
-const Competences = (props) => {
+const competences = (props) => {
   const { competencesDto } = props;
   const classes = styles();
   if (!competencesDto) {
@@ -36,8 +36,8 @@ const Competences = (props) => {
   );
 };
 
-Competences.propTypes = {
-  competencesDto: PropTypes.instanceOf(CompetencesDto),
+competences.propTypes = {
+  competencesDto: PropTypes.instanceOf(CompetencesDto).isRequired,
 };
 
-export default Competences;
+export default competences;

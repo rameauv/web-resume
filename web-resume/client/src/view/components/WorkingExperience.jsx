@@ -4,7 +4,7 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import ImageIcon from '@material-ui/icons/Image';
 import PropTypes from 'prop-types';
-import { WorkingExperienceDto } from '../../repositories/apiRepository/apiDtos';
+import WorkingExperienceDto from '../../repositories/user/dto/WorkingExperienceDto';
 
 const styles = makeStyles(() => ({
   AvatarContainer: {
@@ -61,7 +61,11 @@ const WorkingExperience = (props) => {
             variant="subtitle1"
             data-test="Dates"
           >
-            {getDateText(workingExperience.startingDate)} – {getDateText(workingExperience.endingDate)}
+            {getDateText(workingExperience.startingDate)}
+            {' '}
+–
+            {' '}
+            {getDateText(workingExperience.endingDate)}
           </Typography>
         </div>
         <div>
@@ -78,7 +82,7 @@ const WorkingExperience = (props) => {
 };
 
 WorkingExperience.propTypes = {
-  workingExperience: PropTypes.instanceOf(WorkingExperienceDto),
+  workingExperience: PropTypes.instanceOf(WorkingExperienceDto).isRequired,
 };
 
 export default WorkingExperience;

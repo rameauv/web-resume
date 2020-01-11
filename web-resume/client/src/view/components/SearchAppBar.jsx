@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -11,10 +11,10 @@ import SearchIcon from '@material-ui/icons/Search';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
-import { actions } from '../../context';
 import MenuItem from '@material-ui/core/MenuItem';
+import { actions } from '../../context';
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     width: '100%',
     position: 'sticky',
@@ -110,21 +110,21 @@ const styles = theme => ({
     color: 'inherit',
   },
 });
-const mapStateToProps = store => ({
+const mapStateToProps = (store) => ({
   user: store.user.user,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   loginAction: (payload) => dispatch(actions.user.loginAction(payload)),
   logoutAction: () => dispatch(actions.user.logoutAction()),
 });
 
 class SearchAppBar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       anchorEl: null,
-    }
+    };
     this.handleMenu = this.handleMenu.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
@@ -138,11 +138,12 @@ class SearchAppBar extends React.Component {
 
   handleClose() {
     this.setState({ anchorEl: null });
-    this.open = false
+    this.open = false;
   }
 
   handleLogout() {
-    this.props.logoutAction();
+    const { logoutAction } = this.props;
+    logoutAction();
     this.handleClose();
   }
 
@@ -195,18 +196,29 @@ class SearchAppBar extends React.Component {
                 >
                   <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
                   <MenuItem>
-                    <Link to={"/"}>
+                    <Link to="/">
                       MyPage
                     </Link>
                   </MenuItem>
                 </Menu>
               </>
             ) : (
-              <Link to="/login" className={classes.loginLink}>
-                <Typography className={classes.title} variant="h6" color="inherit" noWrap>
-                  Sign in
-                </Typography>
-              </Link>
+              <>
+                <div className={classes.sectionDesktop}>
+                  <Link to="/login" className={classes.loginLink}>
+                    <Typography variant="h6" color="inherit" noWrap>
+                    Sign in
+                    </Typography>
+                  </Link>
+                </div>
+                <div className={classes.sectionMobile}>
+                  <Link to="/login" className={classes.loginLink}>
+                    <Typography variant="h6" color="inherit" noWrap>
+                    Sign in
+                    </Typography>
+                  </Link>
+                </div>
+              </>
             )}
           </Toolbar>
         </AppBar>
@@ -216,6 +228,7 @@ class SearchAppBar extends React.Component {
 }
 
 AppBar.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
 };
 

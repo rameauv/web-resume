@@ -19,16 +19,16 @@ const App = (props) => {
         <Switch>
           <Route
             exact
-            path='/'
-            render={(props) => <Dashboard {...props} isMyProfile={true} />}
+            path="/"
+            render={(props) => <Dashboard {...props} isMyProfile />}
           />
           <Route
-            path='/profile/:username'
+            path="/profile/:username"
             render={(props) => <Dashboard {...props} isMyProfile={false} />}
           />
           <Route
             exact
-            path='/login'
+            path="/login"
             render={(props) => <Login {...props} />}
           />
           <Route component={NotFound} />
@@ -40,7 +40,7 @@ const App = (props) => {
 
 const render = async (store) => {
   ReactDOM.render(<App store={store} />, document.getElementById('root'));
-}; 
+};
 
 (async function init() {
   // const services = await configureServices();

@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "jest": true
     },
     "extends": [
         "eslint:recommended",
@@ -12,6 +13,7 @@
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
     },
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -23,5 +25,15 @@
         "react"
     ],
     "rules": {
-    }
+    },
+    "settings": {
+        "import/resolver": {
+          "node": {
+            "moduleDirectory": [
+              "node_modules",
+              "src"
+            ]
+          }
+        }
+      }
 }

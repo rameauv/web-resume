@@ -11,7 +11,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 
-const styles = theme => ({
+const styles = (theme) => ({
   '@global': {
     body: {
       backgroundColor: theme.palette.common.white,
@@ -43,7 +43,7 @@ class LoginForm extends React.Component {
     const { emitEvent } = props;
 
     this.emitEvent = emitEvent;
-    this.state = { username: "", password: "", loginSuccess: false };
+    this.state = { username: '', password: '', loginSuccess: false };
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
   }
@@ -64,7 +64,7 @@ class LoginForm extends React.Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Paper className={classes.paper}></Paper>
+        <Paper className={classes.paper} />
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
@@ -73,7 +73,7 @@ class LoginForm extends React.Component {
             </Avatar>
             <Typography component="h1" variant="h5">
               Sign in
-                        </Typography>
+            </Typography>
             <form className={classes.form} noValidate>
               <TextField
                 variant="outlined"
@@ -102,7 +102,7 @@ class LoginForm extends React.Component {
                 onChange={this.handlePasswordChange}
               />
               <Button
-                href='#'
+                href="#"
                 type="submit"
                 fullWidth
                 variant="contained"
@@ -111,7 +111,7 @@ class LoginForm extends React.Component {
                 onClick={this.handleClick}
               >
                 Sign In
-                            </Button>
+              </Button>
               <Grid container>
                 <Grid item xs>
                   {/* <Link href="#" variant="body2"> */}
@@ -133,8 +133,9 @@ class LoginForm extends React.Component {
 }
 
 LoginForm.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
-  emitEvent: PropTypes.func,
+  emitEvent: PropTypes.func.isRequired,
 };
 
 export default (withStyles(styles)(LoginForm));

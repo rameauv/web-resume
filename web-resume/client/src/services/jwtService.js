@@ -1,15 +1,9 @@
 const initService = (jwtRepository) => {
-  const getTokenAsync = async () => {
-    return await jwtRepository.getTokenAsync();
-  };
+  const getTokenAsync = async () => jwtRepository.getTokenAsync();
 
-  const setTokenAsync = async (token) => {
-    return await jwtRepository.setTokenAsync(token);
-  };
+  const setTokenAsync = async (token) => jwtRepository.setTokenAsync(token);
 
-  const clearAsync = async () => {
-    return await jwtRepository.clearAsync();
-  };
+  const clearAsync = async () => jwtRepository.clearAsync();
   return {
     getTokenAsync,
     setTokenAsync,

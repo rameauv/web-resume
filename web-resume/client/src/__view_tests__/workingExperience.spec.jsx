@@ -1,13 +1,14 @@
 import React from 'react';
 import * as enzyme from 'enzyme';
 import ReactSixteenAdapter from 'enzyme-adapter-react-16';
-import WorkingExperience from '../components/workingExperience';
-import { findByTestAttr } from '../utils/findByTestAttr';
-import { WorkingExperienceDto } from '../repositories/apiRepository/apiDtos';
+import WorkingExperience from '../view/components/WorkingExperience';
+import findByTestAttr from './utils/findByTestAttr';
+import WorkingExperienceDto from '../repositories/user/dto/WorkingExperienceDto';
 
 enzyme.configure({ adapter: new ReactSixteenAdapter() });
 
 function setUp(props) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   const component = enzyme.shallow(<WorkingExperience {...props} />);
   return component;
 }
@@ -55,11 +56,11 @@ describe('\'workingExperience\' component', () => {
       const component = findByTestAttr(wrapper, 'Company');
       expect(component.length).toBe(1);
     });
-    it('should render the starting and ending dates', ()=>{
+    it('should render the starting and ending dates', () => {
       const component = findByTestAttr(wrapper, 'Dates');
       expect(component.length).toBe(1);
     });
-    it('should render the address', ()=>{
+    it('should render the address', () => {
       const component = findByTestAttr(wrapper, 'Address');
       expect(component.length).toBe(1);
     });

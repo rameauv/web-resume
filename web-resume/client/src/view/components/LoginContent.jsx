@@ -36,6 +36,7 @@ const loginContent = (props) => {
     classes,
   } = props;
 
+  console.log(loginState);
   const handleLogin = (credentials) => {
     loginAction(credentials);
   };
@@ -60,6 +61,11 @@ const loginContent = (props) => {
 };
 
 loginContent.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  classes: PropTypes.object.isRequired,
+  loginAction: PropTypes.func.isRequired,
+  refreshLoggedUser: PropTypes.func.isRequired,
+  loginState: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(loginContent));
