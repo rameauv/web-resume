@@ -1,5 +1,6 @@
-/node_modules
-/package-lock.json
-/dist
-/src/config/*.json
-/.vscode
+.vscode
+node_modules
+package-lock.json
+yarn.lock
+dist
+src/config/*.json

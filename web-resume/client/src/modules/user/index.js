@@ -3,7 +3,7 @@ import initReducer from './reducer';
 import initMiddleware from './middleware';
 import types from './types';
 
-const configureUserModule = (services, modules) => {
+const configureUserModule = (services) => {
   const usedServices = {
     userService: services.userService,
     jwtService: services.jwtService,

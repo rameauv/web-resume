@@ -1,12 +1,13 @@
 import React from 'react';
 import * as enzyme from 'enzyme';
 import ReactSixteenAdapter from 'enzyme-adapter-react-16';
-import { Intro, IntroDatas } from '../components/Intro';
-import { findByTestAttr } from '../utils/findByTestAttr';
+import Intro, { IntroDatas } from '../view/components/Intro';
+import findByTestAttr from './utils/findByTestAttr';
 
 enzyme.configure({ adapter: new ReactSixteenAdapter() });
 
 function setUp(props) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   const component = enzyme.shallow(<Intro {...props} />);
   return component;
 }

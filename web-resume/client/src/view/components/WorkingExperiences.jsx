@@ -5,8 +5,8 @@ import ListItem from '@material-ui/core/ListItem';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/styles';
 import Divider from '@material-ui/core/Divider';
-import { WorkingExperiencesDto } from '../../repositories/apiRepository/apiDtos';
-import WorkingExperience from './workingExperience';
+import WorkingExperiencesDto from '../../repositories/user/dto/WorkingExperiencesDto';
+import WorkingExperience from './WorkingExperience';
 
 const styles = makeStyles(() => ({
   root: {
@@ -46,7 +46,7 @@ const WorkingExperiences = (props) => {
 };
 
 WorkingExperiences.propTypes = {
-  workingExperiences: PropTypes.instanceOf(WorkingExperiencesDto),
+  workingExperiences: PropTypes.instanceOf(WorkingExperiencesDto).isRequired,
 };
 
 export default WorkingExperiences;

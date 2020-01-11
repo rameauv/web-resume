@@ -1,12 +1,13 @@
 import React from 'react';
 import * as enzyme from 'enzyme';
 import ReactSixteenAdapter from 'enzyme-adapter-react-16';
-import Competence from '../components/competence';
-import { findByTestAttr } from '../utils/findByTestAttr';
+import Competence from '../view/components/Competence';
+import findByTestAttr from './utils/findByTestAttr';
 
 enzyme.configure({ adapter: new ReactSixteenAdapter() });
 
 function setUp(props) {
+  // eslint-disable-next-line react/jsx-props-no-spreading
   const component = enzyme.shallow(<Competence {...props} />);
   return component;
 }
@@ -23,7 +24,7 @@ describe('\'competence\' component', () => {
     });
   });
   describe('when there is props', () => {
-    let wrapper
+    let wrapper;
     beforeEach(() => {
       const props = {
         rate: 50,

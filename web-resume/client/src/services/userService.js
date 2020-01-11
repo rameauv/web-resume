@@ -1,16 +1,12 @@
 const initService = (jwtService, apiRepository) => {
-  const getUserDataAsync = async (userId) => {
-    return apiRepository.getUserDataAsync(userId);
-  };
+  const getUserDataAsync = async (userId) => apiRepository.getUserDataAsync(userId);
 
   const getMyUserDataAsync = async () => {
     const token = await jwtService.getTokenAsync();
     return apiRepository.getMyUserDataAsync(token);
   };
 
-  const loginAsync = async (credentials) => {
-    return apiRepository.loginAsync(credentials);
-  };
+  const loginAsync = async (credentials) => apiRepository.loginAsync(credentials);
 
   return {
     getUserDataAsync,
