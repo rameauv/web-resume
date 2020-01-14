@@ -1,13 +1,13 @@
 export default class UserDto {
-  userid // string
+  userid; // string
 
-  firstname // string;
+  firstname; // string;
 
-  lastname // string;
+  lastname; // string;
 
-  profilePicture // string;
+  profilePicture; // string;
 
-  resumeTitle // string;
+  resumeTitle; // string;
 
-  resume // ResumeDto;
+  resume; // ResumeDto;
 }

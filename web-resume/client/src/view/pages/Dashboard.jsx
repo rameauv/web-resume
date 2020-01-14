@@ -80,7 +80,10 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
+  isMyProfile: PropTypes.bool.isRequired,
+  loginState: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps,

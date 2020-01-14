@@ -1,15 +1,15 @@
 export default class WorkingExperienceDto {
-    title; // string
+  title; // string
 
-    company; // string
+  company; // string
 
-    startingDate; // date
+  startingDate; // date
 
-    endingDate; // date
+  endingDate; // date
 
-    current; // boolean
+  current; // boolean
 
-    address; // string
+  address; // string
 
-    imageUrl; // string
+  imageUrl; // string
 }

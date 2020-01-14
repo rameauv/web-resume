@@ -1,11 +1,11 @@
 export default class ContactDto {
-    profilePicture; // string
+  profilePicture; // string
 
-    title; // string
+  title; // string
 
-    firstname; // string
+  firstname; // string
 
-    lastname; // string
+  lastname; // string
 
-    address; // string
+  address; // string
 }
