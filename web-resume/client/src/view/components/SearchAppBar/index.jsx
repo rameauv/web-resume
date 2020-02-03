@@ -12,7 +12,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import { connect } from 'react-redux';
 import MenuItem from '@material-ui/core/MenuItem';
-import { actions } from '../../context';
+import { actions } from '../../../context';
+import SearchBar from './SearchBar';
 
 const styles = (theme) => ({
   root: {
@@ -119,6 +120,11 @@ const mapDispatchToProps = (dispatch) => ({
   logoutAction: () => dispatch(actions.user.logoutAction()),
 });
 
+type Props = {
+  classes: Object,
+  query: String,
+};
+
 class SearchAppBar extends React.Component {
   constructor(props) {
     super(props);
@@ -148,7 +154,7 @@ class SearchAppBar extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, query } = this.props;
     const userDatas = this.props.user;
     return (
       <div className={classes.root}>
@@ -158,18 +164,7 @@ class SearchAppBar extends React.Component {
               Web-Resume
             </Typography>
             <div className={classes.grow} />
-            <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Search…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-              />
-            </div>
+            <SearchBar currentQuery={query} />
             <div className={classes.grow} />
             {userDatas ? (
               <>
@@ -203,23 +198,23 @@ class SearchAppBar extends React.Component {
                 </Menu>
               </>
             ) : (
-              <>
-                <div className={classes.sectionDesktop}>
-                  <Link to="/login" className={classes.loginLink}>
-                    <Typography variant="h6" color="inherit" noWrap>
-                    Sign in
+                <>
+                  <div className={classes.sectionDesktop}>
+                    <Link to="/login" className={classes.loginLink}>
+                      <Typography variant="h6" color="inherit" noWrap>
+                        Sign in
                     </Typography>
-                  </Link>
-                </div>
-                <div className={classes.sectionMobile}>
-                  <Link to="/login" className={classes.loginLink}>
-                    <Typography variant="h6" color="inherit" noWrap>
-                    Sign in
+                    </Link>
+                  </div>
+                  <div className={classes.sectionMobile}>
+                    <Link to="/login" className={classes.loginLink}>
+                      <Typography variant="h6" color="inherit" noWrap>
+                        Sign in
                     </Typography>
-                  </Link>
-                </div>
-              </>
-            )}
+                    </Link>
+                  </div>
+                </>
+              )}
           </Toolbar>
         </AppBar>
       </div>

@@ -11,7 +11,6 @@ import WorkingExperience from './WorkingExperience';
 const styles = makeStyles(() => ({
   root: {
     width: '100%',
-    // maxWidth: 360,
     backgroundColor: 'white',
   },
 }));

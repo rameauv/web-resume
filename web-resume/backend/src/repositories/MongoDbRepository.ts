@@ -33,5 +33,13 @@ export class MongoDbRepository implements IRepository {
     public async getUserAsync(userid: string): Promise<User> {
         return await this.db.collection("UserDatas").findOne({ userid });
     }
+
+    public async searchAsync(query: string): Promise<User[]> {
+        console.log(query);
+        const regex = new RegExp(query, 'i')
+        const res = await this.db.collection("UserDatas").find<User>({ firstname: regex}).toArray();
+        return res;
+    }
+
     // TODO close
 }

@@ -25,7 +25,7 @@ const styles = () => ({
   },
 });
 
-class Dashboard extends React.Component {
+class Dashboard extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { showedUserDataDto: null };
@@ -54,9 +54,10 @@ class Dashboard extends React.Component {
       this.setState({ showedUserDataDto: user });
       return;
     }
-    if (!fetchedUser) {
-      const { username } = match.params;
-      fetchUser({ userId: username });
+    const { username: urlUsername } = match.params;
+    if (!fetchedUser || urlUsername !== fetchedUser.userid) {
+      fetchUser({ userId: urlUsername });
+      return;
     }
     if (this.state.showedUserDataDto === fetchedUser) { return; }
     this.setState({ showedUserDataDto: fetchedUser });
@@ -80,7 +81,10 @@ class Dashboard extends React.Component {
 }
 
 Dashboard.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
   classes: PropTypes.object.isRequired,
+  isMyProfile: PropTypes.bool.isRequired,
+  loginState: PropTypes.string.isRequired,
 };
 
 export default connect(mapStateToProps,

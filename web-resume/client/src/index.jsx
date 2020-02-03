@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import configureStore from './view/store';
+import configureStore, { Store } from './modules/store';
 import App from './view/App';
 import configureModules from './modules';
 import context from './context';
 import configureServices from './configureServices';
 
-const render = async (store) => {
+const render = async (store: Store) => {
   ReactDOM.render(<App store={store} />, document.getElementById('root'));
 };
 
@@ -17,7 +17,6 @@ const render = async (store) => {
   const { actions, reducers, middlewares } = await configureModules(services);
   const store = configureStore(reducers, middlewares);
 
-  context.registerServices(services);
   context.registerActions(actions);
 
   render(store);
