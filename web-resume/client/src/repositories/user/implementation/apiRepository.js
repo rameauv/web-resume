@@ -1,6 +1,9 @@
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 import InvalidTokenError from '../error/InvalidToken';
+import { User } from '../../../model/User';
+import { UserDto } from '../dto/UserDto';
+import { UserMapper } from '../dto/UserMapper';
 
 function injectAuthHeader(header, token) {
   if (token) {
@@ -73,10 +76,27 @@ const initRepository = (url) => {
       return rsp;
     });
   };
+
+  const searchAsync = async (query: string) => new Promise((resolve, reject) => {
+    const queryString = objToQueryString({ query });
+    return fetch(`${url}/search?${queryString}`, {
+      method: 'GET',
+    }).then((res) => {
+      res.json().then((resobj: Array<UserDto>) => {
+        if (!res.ok) {
+          reject(new Error());
+        }
+        const users = resobj.map((user) => UserMapper.Map(user));
+        resolve(users);
+      }).catch((err) => { throw err; });
+    }).catch((err) => { throw err; });
+  });
+
   return {
     getUserDataAsync,
     getMyUserDataAsync,
     loginAsync,
+    searchAsync,
   };
 };
 

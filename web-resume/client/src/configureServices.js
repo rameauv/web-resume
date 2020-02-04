@@ -1,7 +1,7 @@
 import apiRepositoryInit from './repositories/user/implementation/apiRepository';
 import jwtRepositoryInit from './repositories/jwt/implementation/jwtRepository';
-import userServiceInit from './services/userService';
-import jwtServiceInit from './services/jwtService';
+import userServiceInit from './services/implementation/userService';
+import jwtServiceInit from './services/implementation/jwtService';
 
 export default function () {
   const apiRepository = apiRepositoryInit('/api');

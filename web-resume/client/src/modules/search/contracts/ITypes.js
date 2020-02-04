@@ -1,0 +1,7 @@
+export interface ITypes {
+  SEARCH_ISNEWQUERY: string,
+  SEARCH_SETCURRENTQUERY: string;
+  SEARCH_SETCURRENTQUERY_FULFILLED: string;
+  SEARCH_FETCH: string;
+  SEARCH_FETCH_FULFILLED: string
+}

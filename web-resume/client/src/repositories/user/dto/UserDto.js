@@ -1,13 +1,14 @@
-export default class UserDto {
-  userid // string
+// eslint-disable-next-line import/prefer-default-export
+export class UserDto {
+  userid; // string
 
-  firstname // string;
+  firstname; // string;
 
-  lastname // string;
+  lastname; // string;
 
-  profilePicture // string;
+  profilePicture; // string;
 
-  resumeTitle // string;
+  resumeTitle; // string;
 
-  resume // ResumeDto;
+  resume; // ResumeDto;
 }

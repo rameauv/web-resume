@@ -7,13 +7,13 @@ import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 
 export class IntroDatas {
-    title;
+  title;
 
-    firstname;
+  firstname;
 
-    lastname;
+  lastname;
 
-    profilePicture;
+  profilePicture;
 }
 
 const styles = makeStyles((theme) => ({

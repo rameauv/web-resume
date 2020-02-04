@@ -50,7 +50,7 @@ class LoginForm extends React.Component {
 
   handleClick = (async () => {
     this.emitEvent({ username: this.state.username, password: this.state.password });
-  })
+  });
 
   handleUsernameChange(event) {
     this.setState({ username: event.target.value });
