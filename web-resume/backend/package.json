@@ -32,7 +32,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "chai": "^4.2.0",
     "convict": "^5.2.0",
     "cors": "^2.8.5",
